@@ -1,5 +1,7 @@
 import { HTTPClient } from './HTTPClient';
+import { Game } from 'src/shared/interfaces';
 import { TwitchClient } from './TwitchClient';
+import { QueryHelper } from './QueryHelper';
 
 export class IGDBClient {
   private static _instance: IGDBClient;
@@ -11,6 +13,7 @@ export class IGDBClient {
   private readonly BASE_URL = process.env.IGDB_BASE_URL;
   private httpClient = new HTTPClient({ baseURL: this.BASE_URL });
   private twitchClient = new TwitchClient();
+  private queryHelper = new QueryHelper();
 
   private getHeaders = async (): Promise<any> => {
     const token = await this.twitchClient.getToken();
@@ -22,10 +25,10 @@ export class IGDBClient {
     };
   };
 
-  public getGames = async (): Promise<any> => {
+  public getGames = async (): Promise<Game[]> => {
+    const query = this.queryHelper.getGameQueryFields();
     const headers = await this.getHeaders();
-    const body = 'fields *;';
-    const result = await this.httpClient.post('/games', body, { headers });
+    const result = await this.httpClient.post<Game[]>('/games', query, { headers });
     return result.data;
   };
 }

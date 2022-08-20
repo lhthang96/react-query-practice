@@ -1,19 +1,12 @@
 import React, { ReactElement } from 'react';
-import { useQuery } from 'react-query';
-import { IGDBClient } from 'src/services';
+import { useQueryGame } from 'src/hooks';
 
 export const Home: React.FC = () => {
-  const {
-    isLoading,
-    error,
-    data: games = []
-  } = useQuery('games', async (): Promise<any[]> => {
-    return await IGDBClient.instance.getGames();
-  });
+  const { isLoading, isError, error, data: games = [] } = useQueryGame();
 
   const renderContent = (): ReactElement => {
     if (isLoading) return <span>Loading...</span>;
-    if (error) return <pre>{JSON.stringify(error, undefined, 4)}</pre>;
+    if (isError) return <pre>{JSON.stringify(error, undefined, 4)}</pre>;
     return (
       <ul>
         {games.map((game) => (
