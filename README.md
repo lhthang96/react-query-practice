@@ -1,2 +1,3 @@
-# react-boilerplate
-My React boilerplate with webpack
+# React Query practice
+
+A repo for practicing react query
