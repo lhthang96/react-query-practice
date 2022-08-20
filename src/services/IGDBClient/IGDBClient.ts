@@ -8,7 +8,7 @@ export class IGDBClient {
     return IGDBClient._instance || new IGDBClient();
   }
 
-  private readonly BASE_URL = getBaseURL();
+  private readonly BASE_URL = process.env.IGDB_BASE_URL;
   private httpClient = new HTTPClient({ baseURL: this.BASE_URL });
   private twitchClient = new TwitchClient();
 
@@ -16,8 +16,8 @@ export class IGDBClient {
     const token = await this.twitchClient.getToken();
     const clientId = this.twitchClient.getClientId();
     return {
-      'Client-ID': clientId,
       Authorization: `Bearer ${token}`,
+      'Client-ID': clientId,
       'Content-Type': 'text/plain'
     };
   };
@@ -29,7 +29,3 @@ export class IGDBClient {
     return result.data;
   };
 }
-
-const getBaseURL = (): string => {
-  return process.env.MODE === 'DEV' ? 'http://localhost:8080/https://api.igdb.com/v4' : 'https://api.igdb.com/v4';
-};

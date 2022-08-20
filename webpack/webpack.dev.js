@@ -15,6 +15,7 @@ module.exports = merge(common, {
     hot: true,
     compress: true
   },
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: resolve(__dirname, './templates/index.dev.html'),
