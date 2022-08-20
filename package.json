@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.2",
@@ -22,6 +23,8 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-imports": "^2.0.0",
+    "concurrently": "^7.3.0",
+    "cors-anywhere": "^0.4.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "dotenv-webpack": "^8.0.0",
@@ -39,7 +42,9 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.js",
+    "start-proxy": "node proxy",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.js",
+    "dev": "concurrently \"yarn start-proxy\" \"yarn start\"",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
     "serve": "serve public -p 8001",
     "deploy": "firebase deploy",
