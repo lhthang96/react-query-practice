@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { useQuery } from 'react-query';
-import { HTTPClient } from 'src/services';
+import { IGDBClient } from 'src/services';
 
 export const Home: React.FC = () => {
   const {
@@ -8,7 +8,7 @@ export const Home: React.FC = () => {
     error,
     data: games = []
   } = useQuery('games', async (): Promise<any[]> => {
-    return await HTTPClient.instance.getGames();
+    return await IGDBClient.instance.getGames();
   });
 
   const renderContent = (): ReactElement => {
