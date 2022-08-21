@@ -1,6 +1,6 @@
 export type QueryFields<Entity extends object = any> = QueryField<Entity>[] | string;
 export type QueryField<Entity extends object = any> = keyof Entity;
-export type QueryFieldExpander<Entity extends object = any> = [keyof Entity, string[]];
+export type QueryFieldExpander<Entity extends object = any> = [keyof Entity] | [keyof Entity, string[]];
 
 export class FieldsHelper {
   public getQuery = <Entity extends object = any>(
