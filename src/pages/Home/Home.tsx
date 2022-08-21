@@ -9,7 +9,10 @@ export const Home: React.FC = () => {
     data: games = []
   } = useQueryGame({
     fields: '*',
-    expanders: [['cover', ['animated', 'width', 'height', 'url']], ['screenshots']],
+    expanders: {
+      cover: ['animated', 'width', 'height', 'url'],
+      screenshots: ['height']
+    },
     sorters: [
       ['total_rating', 'desc'],
       ['follows', 'desc']

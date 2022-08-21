@@ -1,11 +1,15 @@
 export type QueryFields<Entity extends object = any> = QueryField<Entity>[] | string;
 export type QueryField<Entity extends object = any> = keyof Entity;
-export type QueryFieldExpander<Entity extends object = any> = [keyof Entity] | [keyof Entity, string[]];
+export type QueryFieldExpanders<Entity extends object = any> = {
+  [key in keyof Entity]?:
+    | (Entity[key] extends readonly (infer ElementType)[] ? keyof ElementType : keyof Entity[key])[]
+    | ['*'];
+};
 
 export class FieldsHelper {
   public getQuery = <Entity extends object = any>(
     fields: QueryFields<Entity> = '*',
-    expanders?: QueryFieldExpander<Entity>[],
+    expanders?: QueryFieldExpanders,
     excludes?: QueryField<Entity>[]
   ): string => {
     let result = this.computeQueryFields(fields);
@@ -20,12 +24,12 @@ export class FieldsHelper {
     return Array.isArray(fields) ? `fields ${fields.join(',')}` : `fields ${fields}`;
   };
 
-  private computeQueryExpanders = (queryString: string, expanders: QueryFieldExpander[]): string => {
-    if (!expanders?.length) return queryString;
+  private computeQueryExpanders = (queryString: string, expanders: QueryFieldExpanders): string => {
+    if (!Object.keys(expanders || {}).length) return queryString;
 
     let result = queryString;
 
-    expanders.forEach((expander) => {
+    Object.entries(expanders).forEach((expander) => {
       const [field, expanderFields = ['*']] = expander;
       const expanderQuery = expanderFields
         .map((expanderField) => `${field.toString()}.${expanderField.toString()}`)

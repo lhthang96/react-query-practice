@@ -1,4 +1,4 @@
-import { FieldsHelper, QueryField, QueryFieldExpander, QueryFields } from './FieldsHelper';
+import { FieldsHelper, QueryField, QueryFieldExpanders, QueryFields } from './FieldsHelper';
 import { FiltersHelper, QueryFilter } from './FiltersHelper';
 import { QuerySorter, SortersHelper } from './SortersHelper';
 
@@ -7,7 +7,7 @@ export type IGDBQuery<Entity extends object = any> = {
   sorters?: QuerySorter<Entity>[];
   filters?: QueryFilter<Entity>[];
   excludes?: QueryField<Entity>[];
-  expanders?: QueryFieldExpander<Entity>[];
+  expanders?: QueryFieldExpanders<Entity>;
 };
 
 export class QueryHelper {
