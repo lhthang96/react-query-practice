@@ -1,21 +1,16 @@
-import { FieldsHelper, QueryField, QueryFieldExpanders, QueryFields } from './FieldsHelper';
-import { FiltersHelper, QueryFilter } from './FiltersHelper';
-import { QuerySorter, SortersHelper } from './SortersHelper';
-
-export type IGDBQuery<Entity extends object = any> = {
-  fields?: QueryFields<Entity>;
-  sorters?: QuerySorter<Entity>[];
-  filters?: QueryFilter<Entity>[];
-  excludes?: QueryField<Entity>[];
-  expanders?: QueryFieldExpanders<Entity>;
-};
+import { GameQuery, IGDBQueryObject } from 'src/shared/interfaces';
+import { FieldsHelper } from './FieldsHelper';
+import { FiltersHelper } from './FiltersHelper';
+import { ScopeHelper } from './ScopeHelper';
+import { SortersHelper } from './SortersHelper';
 
 export class QueryHelper {
   private fieldsHelper = new FieldsHelper();
   private sorterHelper = new SortersHelper();
   private filtersHelper = new FiltersHelper();
+  private scopeHelper = new ScopeHelper();
 
-  public getQueryBody = <Entity extends object = any>(query: IGDBQuery<Entity>): string => {
+  private getQuery = <Entity extends object = any>(query: IGDBQueryObject<Entity>): string => {
     const { fields = '*', excludes, expanders, sorters, filters } = query || {};
 
     // Get fields query
@@ -34,5 +29,13 @@ export class QueryHelper {
     }
 
     return result;
+  };
+
+  public getGameQuery = (query: GameQuery): string => {
+    const { scope, ...rest } = query;
+    return this.getQuery({
+      ...this.scopeHelper.computeGameFields(scope),
+      ...rest
+    });
   };
 }

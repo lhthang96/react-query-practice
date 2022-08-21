@@ -8,11 +8,7 @@ export const Home: React.FC = () => {
     error,
     data: games = []
   } = useQueryGame({
-    fields: '*',
-    expanders: {
-      cover: ['animated', 'width', 'height', 'url'],
-      screenshots: ['height']
-    },
+    scope: 'default',
     sorters: [
       ['total_rating', 'desc'],
       ['follows', 'desc']

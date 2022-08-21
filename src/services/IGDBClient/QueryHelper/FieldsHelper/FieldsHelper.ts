@@ -1,16 +1,10 @@
-export type QueryFields<Entity extends object = any> = QueryField<Entity>[] | string;
-export type QueryField<Entity extends object = any> = keyof Entity;
-export type QueryFieldExpanders<Entity extends object = any> = {
-  [key in keyof Entity]?:
-    | (Entity[key] extends readonly (infer ElementType)[] ? keyof ElementType : keyof Entity[key])[]
-    | ['*'];
-};
+import { QueryExpanders, QueryFields } from 'src/shared/interfaces';
 
 export class FieldsHelper {
   public getQuery = <Entity extends object = any>(
     fields: QueryFields<Entity> = '*',
-    expanders?: QueryFieldExpanders,
-    excludes?: QueryField<Entity>[]
+    expanders?: QueryExpanders,
+    excludes?: (keyof Entity)[]
   ): string => {
     let result = this.computeQueryFields(fields);
     result = this.computeQueryExpanders(result, expanders);
@@ -24,7 +18,7 @@ export class FieldsHelper {
     return Array.isArray(fields) ? `fields ${fields.join(',')}` : `fields ${fields}`;
   };
 
-  private computeQueryExpanders = (queryString: string, expanders: QueryFieldExpanders): string => {
+  private computeQueryExpanders = (queryString: string, expanders: QueryExpanders): string => {
     if (!Object.keys(expanders || {}).length) return queryString;
 
     let result = queryString;
@@ -41,7 +35,7 @@ export class FieldsHelper {
     return result;
   };
 
-  private computeQueryExcludes = (queryString: string, excludes: QueryField[]): string => {
+  private computeQueryExcludes = (queryString: string, excludes: (string | number | symbol)[]): string => {
     if (!excludes?.length) return queryString;
 
     const excludeQuery = `exclude ${excludes.join(',')};`;

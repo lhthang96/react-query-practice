@@ -1,6 +1,6 @@
-import { Game } from 'src/shared/interfaces';
+import { Game, GameScope, IGDBQuery } from 'src/shared/interfaces';
 import { HTTPClient } from './HTTPClient';
-import { IGDBQuery, QueryHelper } from './QueryHelper';
+import { QueryHelper } from './QueryHelper';
 import { TwitchClient } from './TwitchClient';
 
 export class IGDBClient {
@@ -11,13 +11,13 @@ export class IGDBClient {
   }
 
   private readonly BASE_URL = process.env.IGDB_BASE_URL;
-  private httpClient = new HTTPClient({ baseURL: this.BASE_URL });
-  private twitchClient = new TwitchClient();
+  private http = new HTTPClient({ baseURL: this.BASE_URL });
+  private twitch = new TwitchClient();
   private queryHelper = new QueryHelper();
 
   private getHeaders = async (): Promise<any> => {
-    const token = await this.twitchClient.getToken();
-    const clientId = this.twitchClient.getClientId();
+    const token = await this.twitch.getToken();
+    const clientId = this.twitch.getClientId();
     return {
       Authorization: `Bearer ${token}`,
       'Client-ID': clientId,
@@ -25,10 +25,10 @@ export class IGDBClient {
     };
   };
 
-  public getGames = async (query: IGDBQuery<Game>): Promise<Game[]> => {
+  public getGames = async (query: IGDBQuery<Game, GameScope>): Promise<Game[]> => {
     const headers = await this.getHeaders();
-    const body = this.queryHelper.getQueryBody(query);
-    const result = await this.httpClient.post<Game[]>('/games', body, { headers });
+    const body = this.queryHelper.getGameQuery(query);
+    const result = await this.http.post<Game[]>('/games', body, { headers });
     return result.data;
   };
 }

@@ -1,6 +1,4 @@
-export type QueryFilter<Entity extends object = any> = [keyof Entity, QueryFilterOperator, QueryFilterValue];
-export type QueryFilterOperator = '=' | '!=' | '>' | '>=' | '<' | '<=' | '~';
-export type QueryFilterValue = string | number | 'null';
+import { QueryFilter } from 'src/shared/interfaces';
 
 export class FiltersHelper {
   public getQuery = <Entity extends object = any>(filters: QueryFilter<Entity>[] = []): string => {

@@ -1,5 +1,4 @@
-export type QuerySorter<Entity extends object = any> = [keyof Entity, QuerySorterOrder];
-export type QuerySorterOrder = 'desc' | 'asc';
+import { QuerySorter } from 'src/shared/interfaces';
 
 export class SortersHelper {
   public getQuery = <Entity extends object = any>(sorters: QuerySorter<Entity>[] = []): string => {
