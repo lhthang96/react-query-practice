@@ -1,4 +1,4 @@
-import { Game, GameScope, IGDBQuery } from 'src/shared/interfaces';
+import { Game, GameScope, IGDBQuery, ImageSize } from 'src/shared/interfaces';
 import { HTTPClient } from './HTTPClient';
 import { QueryHelper } from './QueryHelper';
 import { TwitchClient } from './TwitchClient';
@@ -30,5 +30,9 @@ export class IGDBClient {
     const body = this.queryHelper.getGameQuery(query);
     const result = await this.http.post<Game[]>('/games', body, { headers });
     return result.data;
+  };
+
+  public getImageURL = (imageId: string, size: ImageSize): string => {
+    return `https://images.igdb.com/igdb/image/upload/t_${size}/${imageId}.jpg`;
   };
 }

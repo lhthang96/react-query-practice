@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult } from 'react-query';
+import { QueryKey, useQuery, UseQueryResult } from 'react-query';
 import { Game, GameScope, IGDBQuery } from 'src/shared/interfaces';
 import { IGDBClient } from 'src/services';
 

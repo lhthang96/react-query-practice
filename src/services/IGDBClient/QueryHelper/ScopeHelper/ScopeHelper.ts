@@ -29,8 +29,8 @@ export class ScopeHelper {
         return {
           fields: '*',
           expanders: {
-            cover: ['animated', 'width', 'height', 'url'],
-            screenshots: ['id', 'height', 'width', 'url']
+            cover: ['animated', 'width', 'height', 'url', 'image_id'],
+            screenshots: ['id', 'height', 'width', 'url', 'image_id']
           }
         };
     }
