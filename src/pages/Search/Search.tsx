@@ -1,3 +1,4 @@
+import { Input } from '@nextui-org/react';
 import React, { ReactElement, Suspense, useDeferredValue, useEffect, useRef, useState } from 'react';
 import { useSearchGame } from 'src/hooks';
 import { StyledSearch } from './Search.styles';
@@ -42,7 +43,7 @@ export const Search: React.FC = () => {
 
   return (
     <StyledSearch>
-      <input
+      <Input
         value={keyword}
         onChange={(e): void => {
           setKeyword(e.target.value);

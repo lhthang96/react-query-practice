@@ -1,3 +1,4 @@
+import { Button } from '@nextui-org/react';
 import React, { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQueryGame } from 'src/hooks';
@@ -39,7 +40,7 @@ export const Home: React.FC = () => {
 
   return (
     <main>
-      <button onClick={goToSearchPage}>Search</button>
+      <Button onClick={goToSearchPage}>Search</Button>
       {renderContent()}
     </main>
   );
