@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useQueryGame } from 'src/hooks';
 
 export const Home: React.FC = () => {
@@ -19,6 +20,11 @@ export const Home: React.FC = () => {
     ]
   });
 
+  const navigate = useNavigate();
+  const goToSearchPage = (): void => {
+    navigate({ pathname: '/search' });
+  };
+
   const renderContent = (): ReactElement => {
     if (isLoading) return <span>Loading...</span>;
     if (isError) return <pre>{JSON.stringify(error, undefined, 4)}</pre>;
@@ -31,5 +37,10 @@ export const Home: React.FC = () => {
     );
   };
 
-  return <main>{renderContent()}</main>;
+  return (
+    <main>
+      <button onClick={goToSearchPage}>Search</button>
+      {renderContent()}
+    </main>
+  );
 };

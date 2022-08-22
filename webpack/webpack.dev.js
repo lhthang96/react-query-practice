@@ -13,7 +13,8 @@ module.exports = merge(common, {
     port: 8000,
     open: true,
     hot: true,
-    compress: true
+    compress: true,
+    historyApiFallback: true
   },
   devtool: 'source-map',
   plugins: [

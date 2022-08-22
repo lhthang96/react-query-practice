@@ -8,6 +8,7 @@ export type IGDBQuery<Data extends object, Scope> = Omit<IGDBQueryObject<Data>, 
 };
 
 export type IGDBQueryObject<Data extends object = any> = {
+  search?: string;
   fields?: QueryFields<Data>;
   sorters?: QuerySorter<Data>[];
   filters?: QueryFilter<Data>[];

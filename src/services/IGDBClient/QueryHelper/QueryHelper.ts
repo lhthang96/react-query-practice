@@ -11,10 +11,14 @@ export class QueryHelper {
   private scopeHelper = new ScopeHelper();
 
   private getQuery = <Entity extends object = any>(query: IGDBQueryObject<Entity>): string => {
-    const { fields = '*', excludes, expanders, sorters, filters } = query || {};
+    const { fields = '*', excludes, expanders, sorters, filters, search } = query || {};
 
     // Get fields query
     let result = this.fieldsHelper.getQuery<Entity>(fields, expanders, excludes);
+
+    if (search) {
+      result = result.concat(`\nsearch "${search}";`);
+    }
 
     // Get sorters query
     if (sorters?.length) {
