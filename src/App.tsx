@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from 'src/pages';
 import { Search } from './pages/Search';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {

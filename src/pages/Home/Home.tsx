@@ -1,6 +1,7 @@
 import { Button } from '@nextui-org/react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { StyledHome } from './Home.styles';
 import { TopGames } from './TopGames';
 
 export const Home: React.FC = () => {
@@ -10,9 +11,9 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <main>
+    <StyledHome>
       <Button onClick={goToSearchPage}>Search</Button>
-      <TopGames />
-    </main>
+      <TopGames className="top-games" />
+    </StyledHome>
   );
 };

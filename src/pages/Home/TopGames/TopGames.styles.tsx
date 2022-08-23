@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '@nextui-org/react';
 
 export const StyledTopGames = styled.div`
   width: 100%;

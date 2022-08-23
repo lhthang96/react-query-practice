@@ -18,14 +18,13 @@ export const Search: React.FC = () => {
     scope: 'search'
   });
 
-  const refDebounceTimeout = useRef<number>();
   useEffect(() => {
-    refDebounceTimeout.current = window.setTimeout(() => {
+    const timeout = window.setTimeout(() => {
       setDebouncedKeyword(keyword);
     }, SEARCH_DEBOUNCE_TIME);
 
     return (): void => {
-      refDebounceTimeout.current && window.clearTimeout(refDebounceTimeout.current);
+      window.clearTimeout(timeout);
     };
   }, [keyword]);
 

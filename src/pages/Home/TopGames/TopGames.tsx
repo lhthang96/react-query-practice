@@ -1,4 +1,5 @@
 import React, { ComponentPropsWithoutRef } from 'react';
+import { Carousel } from 'react-responsive-carousel';
 import { useQueryGame } from 'src/hooks';
 import { TopGame } from './TopGame';
 import { StyledTopGames } from './TopGames.styles';
@@ -25,9 +26,11 @@ export const TopGames: React.FC<TopGamesProps> = (props) => {
 
   return (
     <StyledTopGames>
-      {topGames.map((topGame) => (
-        <TopGame key={topGame.id} game={topGame} />
-      ))}
+      <Carousel autoPlay={false} infiniteLoop showThumbs={false} showStatus={false}>
+        {topGames.map((topGame) => (
+          <TopGame key={topGame.id} game={topGame} />
+        ))}
+      </Carousel>
     </StyledTopGames>
   );
 };
