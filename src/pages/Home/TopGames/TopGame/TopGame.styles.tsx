@@ -59,6 +59,48 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
         }
 
         .extra-info {
+          width: 100%;
+          display: flex;
+          align-items: stretch;
+          column-gap: 0.5rem;
+
+          .rating {
+            color: ${theme.colors.white.value};
+            align-self: center;
+          }
+
+          .extra-info-separator {
+            width: 1px;
+            margin: 0 20px;
+            background: ${theme.colors.white.value};
+          }
+
+          .release-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 8px;
+            color: ${theme.colors.white.value};
+
+            .release-date-icon {
+              width: 24px;
+              fill: ${theme.colors.white.value};
+            }
+          }
+
+          .follow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 8px;
+            color: ${theme.colors.white.value};
+            margin-right: 20px;
+
+            .follow-icon {
+              width: 24px;
+              fill: ${theme.colors.white.value};
+            }
+          }
         }
       }
 

@@ -7,12 +7,7 @@ import { StyledTopGames } from './TopGames.styles';
 type TopGamesProps = ComponentPropsWithoutRef<'div'>;
 
 export const TopGames: React.FC<TopGamesProps> = (props) => {
-  const {
-    isLoading,
-    isError,
-    error,
-    data: topGames = []
-  } = useQueryGame({
+  const { data: topGames = [] } = useQueryGame({
     scope: 'default',
     sorters: [
       ['total_rating', 'desc'],
@@ -26,7 +21,7 @@ export const TopGames: React.FC<TopGamesProps> = (props) => {
 
   return (
     <StyledTopGames>
-      <Carousel autoPlay={false} infiniteLoop showThumbs={false} showStatus={false}>
+      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
         {topGames.map((topGame) => (
           <TopGame key={topGame.id} game={topGame} />
         ))}
