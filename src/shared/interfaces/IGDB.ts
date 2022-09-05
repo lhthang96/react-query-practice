@@ -24,6 +24,7 @@ export type Game = {
   similar_games?: SimilarGame[];
   url?: string; // The website address (URL) of the item
   platforms?: number[];
+  themes?: GameTheme[];
 };
 
 export type GameCover = {
@@ -63,6 +64,11 @@ export type SimilarGame = Pick<Game, 'id' | 'name' | 'cover'>;
 export type GamePlatform = {
   name: string;
   category?: GamePlatformCategory;
+};
+
+export type GameTheme = {
+  name: string;
+  id: string;
 };
 
 export type ImageSize =

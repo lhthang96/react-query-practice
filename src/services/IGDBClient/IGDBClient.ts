@@ -1,4 +1,4 @@
-import { Game, GameScope, IGDBQuery, ImageSize } from 'src/shared/interfaces';
+import { Game, GameGenre, GameQuery, GameTheme, GenreQuery, ImageSize, ThemeQuery } from 'src/shared/interfaces';
 import { HTTPClient } from './HTTPClient';
 import { QueryHelper } from './QueryHelper';
 import { TwitchClient } from './TwitchClient';
@@ -25,7 +25,7 @@ export class IGDBClient {
     };
   };
 
-  public getGames = async (query: IGDBQuery<Game, GameScope>): Promise<Game[]> => {
+  public getGames = async (query: GameQuery): Promise<Game[]> => {
     const headers = await this.getHeaders();
     const body = this.queryHelper.getGameQuery(query);
     const result = await this.http.post<Game[]>('/games', body, { headers });
@@ -34,5 +34,19 @@ export class IGDBClient {
 
   public getImageURL = (imageId: string, size: ImageSize): string => {
     return `https://images.igdb.com/igdb/image/upload/t_${size}/${imageId}.jpg`;
+  };
+
+  public getGenres = async (query: GenreQuery): Promise<GameGenre[]> => {
+    const headers = await this.getHeaders();
+    const body = this.queryHelper.getGenreQuery(query);
+    const result = await this.http.post<GameGenre[]>('/genres', body, { headers });
+    return result.data;
+  };
+
+  public getThemes = async (query: ThemeQuery): Promise<GameTheme[]> => {
+    const headers = await this.getHeaders();
+    const body = this.queryHelper.getThemeQuery(query);
+    const result = await this.http.post<GameTheme[]>('/themes', body, { headers });
+    return result.data;
   };
 }

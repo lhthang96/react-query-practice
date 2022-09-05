@@ -1,4 +1,4 @@
-import { Game } from './IGDB';
+import { Game, GameGenre, GameTheme } from './IGDB';
 
 /**
  * Query
@@ -14,6 +14,7 @@ export type IGDBQueryObject<Data extends object = any> = {
   filters?: QueryFilter<Data>[];
   excludes?: (keyof Data)[];
   expanders?: QueryExpanders<Data>;
+  pagination?: QueryPagination;
 };
 
 /**
@@ -40,7 +41,20 @@ export type QueryFilterOperator = '=' | '!=' | '>' | '>=' | '<' | '<=' | '~';
 export type QueryFilterValue = string | number | 'null';
 
 /**
+ * Pagination
+ */
+export type QueryPagination = {
+  limit: number;
+  offset: number;
+};
+
+/**
  * Data query interfaces
  */
 export type GameScope = 'default' | 'full' | 'search';
+export type GenreScope = 'default' | 'full';
+export type ThemeScope = 'default' | 'full';
+
 export type GameQuery = IGDBQuery<Game, GameScope>;
+export type GenreQuery = IGDBQuery<GameGenre, GenreScope>;
+export type ThemeQuery = IGDBQuery<GameTheme, ThemeScope>;

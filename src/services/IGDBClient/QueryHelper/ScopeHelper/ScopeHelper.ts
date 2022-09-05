@@ -1,4 +1,4 @@
-import { Game, GameScope, IGDBQueryObject } from 'src/shared/interfaces';
+import { Game, GameGenre, GameScope, GameTheme, GenreScope, IGDBQueryObject, ThemeScope } from 'src/shared/interfaces';
 
 export class ScopeHelper {
   public computeGameFields = (scope: GameScope): Pick<IGDBQueryObject<Game>, 'fields' | 'expanders' | 'excludes'> => {
@@ -34,5 +34,21 @@ export class ScopeHelper {
           }
         };
     }
+  };
+
+  public computeGenreFields = (
+    scope: GenreScope
+  ): Pick<IGDBQueryObject<GameGenre>, 'fields' | 'expanders' | 'excludes'> => {
+    return {
+      fields: '*'
+    };
+  };
+
+  public computeThemeFields = (
+    scope: ThemeScope
+  ): Pick<IGDBQueryObject<GameTheme>, 'fields' | 'expanders' | 'excludes'> => {
+    return {
+      fields: '*'
+    };
   };
 }
