@@ -1,25 +1,28 @@
-import { Button, Image, Input, Navbar, Text } from '@nextui-org/react';
+import { Button, Navbar } from '@nextui-org/react';
 import React from 'react';
-import IGDBLogo from 'src/assets/igdb_logo.jpeg';
-import { StyledNavigationBar } from './NavigationBar.styles';
+import IconHeart from 'src/assets/icon_heart.svg';
+import IconSearch from 'src/assets/icon_search.svg';
+import IGDBLogo from 'src/assets/logo_desktop.svg';
+import { StyledFavoriteButton, StyledNavigationBar, StyledSearchInput } from './NavigationBar.styles';
 
 export const NavigationBar: React.FC = () => {
   return (
     <StyledNavigationBar>
       <Navbar.Brand>
-        <Image src={IGDBLogo} alt="IGDB logo" width={72} />
-        <Text b color="inherit" hideIn="xs">
-          Query
-        </Text>
+        <IGDBLogo height={72} />
       </Navbar.Brand>
-      <Navbar.Content>
+      <Navbar.Content gap={'16px'}>
         <Navbar.Item>
-          <Input placeholder="Search" />
+          <StyledSearchInput
+            placeholder="Search"
+            contentRightStyling={false}
+            contentRight={<IconSearch className="search-icon" />}
+          />
         </Navbar.Item>
         <Navbar.Item>
-          <Button auto flat>
+          <StyledFavoriteButton auto icon={<IconHeart className="favorite-icon" />}>
             Favorite
-          </Button>
+          </StyledFavoriteButton>
         </Navbar.Item>
       </Navbar.Content>
     </StyledNavigationBar>
