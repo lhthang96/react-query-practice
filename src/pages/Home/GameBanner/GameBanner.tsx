@@ -2,11 +2,11 @@ import React, { ComponentPropsWithoutRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useQueryGame } from 'src/hooks';
 import { TopGame } from './TopGame';
-import { StyledTopGames } from './TopGames.styles';
+import { StyledGameBanner } from './GameBanner.styles';
 
-type TopGamesProps = ComponentPropsWithoutRef<'div'>;
+type GameBannerProps = ComponentPropsWithoutRef<'div'>;
 
-export const TopGames: React.FC<TopGamesProps> = (props) => {
+export const GameBanner: React.FC<GameBannerProps> = (props) => {
   const { data: topGames = [] } = useQueryGame({
     scope: 'default',
     sorters: [
@@ -20,12 +20,12 @@ export const TopGames: React.FC<TopGamesProps> = (props) => {
   });
 
   return (
-    <StyledTopGames>
-      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
+    <StyledGameBanner>
+      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="carousel-container">
         {topGames.map((topGame) => (
           <TopGame key={topGame.id} game={topGame} />
         ))}
       </Carousel>
-    </StyledTopGames>
+    </StyledGameBanner>
   );
 };

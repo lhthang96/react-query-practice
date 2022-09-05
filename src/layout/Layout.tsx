@@ -12,7 +12,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <StyledLayout>
       <NavigationBar />
-      {children}
+      <main className="content">{children}</main>
     </StyledLayout>
   );
 };

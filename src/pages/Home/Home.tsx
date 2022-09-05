@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/react';
+import { Button, Grid } from '@nextui-org/react';
 import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useQueryGame } from 'src/hooks';
 import { IGDBClient } from 'src/services';
 import { GameGenre, GameTheme } from 'src/shared/interfaces';
 import { StyledHome } from './Home.styles';
-import { TopGames } from './TopGames';
+import { GameBanner } from './GameBanner';
 
 const CURRENT_TIME = new Date().getTime() / 1000;
 const NEXT_WEEK_TIME = (new Date().getTime() + 7 * 24 * 60 * 60 * 1000) / 1000;
@@ -55,8 +55,12 @@ export const Home: React.FC = () => {
 
   return (
     <StyledHome>
-      <Button onClick={goToSearchPage}>Search</Button>
-      <TopGames className="top-games" />
+      <Grid xs={12} sm={9} className="home-content">
+        <GameBanner />
+      </Grid>
+      <Grid xs={0} sm={3} className="home-right-container">
+        right menu
+      </Grid>
     </StyledHome>
   );
 };

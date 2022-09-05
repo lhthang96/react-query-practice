@@ -32,7 +32,7 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
 
   .content {
     position: relative;
-    padding: 1.5rem;
+    padding: 60px 32px;
     z-index: 3;
 
     .cover {

@@ -1,7 +1,17 @@
+import { Grid } from '@nextui-org/react';
+import { THEME } from 'src/shared/theme';
 import styled from 'styled-components';
 
-export const StyledHome = styled.main`
-  .top-games {
+export const StyledHome = styled(Grid.Container)`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .home-content {
     width: 100%;
+    height: 100%;
+    overflow: hidden auto;
+    padding: 32px 40px;
+    border-right: 1px solid ${THEME.BORDER_COLOR};
   }
 `;
