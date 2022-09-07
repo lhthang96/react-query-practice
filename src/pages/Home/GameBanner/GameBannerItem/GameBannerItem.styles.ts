@@ -45,10 +45,12 @@ export const StyledGameBannerItem = styled.div<{ backgroundUrl: string }>`
 
     .game-info {
       text-align: left;
+      display: flex;
+      flex-direction: column;
+      row-gap: 32px;
 
       .header {
         width: 100%;
-        padding: 1rem 0 1.5rem;
         display: flex;
         flex-direction: column;
         row-gap: 24px;
@@ -73,12 +75,6 @@ export const StyledGameBannerItem = styled.div<{ backgroundUrl: string }>`
             align-self: stretch;
           }
         }
-      }
-
-      .separator {
-        width: 100%;
-        height: 2px;
-        background-color: ${THEME.TEXT_PRIMARY_INVERSE};
       }
 
       .summary {

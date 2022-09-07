@@ -33,18 +33,15 @@ export const GameBannerItem: React.FC<GameBannerItemProps> = (props) => {
           <Image src={coverURL} alt={`Cover Image - ${game?.name}`} className="cover-image" />
         </Grid>
         <Grid xs={12} sm={9} className="game-info">
-          <div className="game-info-container">
-            <div className="header">
-              <p className="title">{game?.name}</p>
-              <div className="game-overview">
-                <GameBannerRating game={game} />
-                <div className="game-overview-separator" />
-                <GameBannerExtraInfo game={game} />
-              </div>
+          <div className="header">
+            <p className="title">{game?.name}</p>
+            <div className="game-overview">
+              <GameBannerRating game={game} />
+              <div className="game-overview-separator" />
+              <GameBannerExtraInfo game={game} />
             </div>
-            <div className="separator" />
-            <p className="summary">{game?.summary}</p>
           </div>
+          <p className="summary">{game?.summary}</p>
         </Grid>
       </Grid.Container>
     </StyledGameBannerItem>
