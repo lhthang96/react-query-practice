@@ -1,7 +1,8 @@
 import { theme } from '@nextui-org/react';
+import { THEME } from 'src/shared/theme';
 import styled from 'styled-components';
 
-export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
+export const StyledGameBannerItem = styled.div<{ backgroundUrl: string }>`
   width: 100%;
   position: relative;
 
@@ -35,10 +36,10 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
     padding: 60px 32px;
     z-index: 3;
 
-    .cover {
+    .cover-container {
       .cover-image {
         width: 100%;
-        max-width: 180px;
+        max-width: 200px;
       }
     }
 
@@ -50,12 +51,14 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
         padding: 1rem 0 1.5rem;
         display: flex;
         flex-direction: column;
+        row-gap: 24px;
 
         .title {
-          font-size: 1.875rem;
           font-weight: 600;
-          color: ${theme.colors.white.value};
-          margin-bottom: 0.5rem;
+          font-size: 40px;
+          line-height: 48px;
+          color: ${THEME.TEXT_PRIMARY_INVERSE};
+          margin: 0;
         }
 
         .extra-info {
@@ -64,15 +67,10 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
           align-items: stretch;
           column-gap: 0.5rem;
 
-          .rating {
-            color: ${theme.colors.white.value};
-            align-self: center;
-          }
-
           .extra-info-separator {
             width: 1px;
             margin: 0 20px;
-            background: ${theme.colors.white.value};
+            background: ${THEME.TEXT_PRIMARY_INVERSE};
           }
 
           .release-date {
@@ -80,11 +78,11 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
             flex-direction: column;
             align-items: center;
             row-gap: 8px;
-            color: ${theme.colors.white.value};
+            color: ${THEME.TEXT_PRIMARY_INVERSE};
 
             .release-date-icon {
               width: 24px;
-              fill: ${theme.colors.white.value};
+              fill: ${THEME.TEXT_PRIMARY_INVERSE};
             }
           }
 
@@ -93,12 +91,12 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
             flex-direction: column;
             align-items: center;
             row-gap: 8px;
-            color: ${theme.colors.white.value};
+            color: ${THEME.TEXT_PRIMARY_INVERSE};
             margin-right: 20px;
 
             .follow-icon {
               width: 24px;
-              fill: ${theme.colors.white.value};
+              fill: ${THEME.TEXT_PRIMARY_INVERSE};
             }
           }
         }
@@ -107,11 +105,11 @@ export const StyledTopGame = styled.div<{ backgroundUrl: string }>`
       .separator {
         width: 100%;
         height: 2px;
-        background-color: ${theme.colors.white.value};
+        background-color: ${THEME.TEXT_PRIMARY_INVERSE};
       }
 
       .summary {
-        color: ${theme.colors.white.value};
+        color: ${THEME.TEXT_PRIMARY_INVERSE};
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;

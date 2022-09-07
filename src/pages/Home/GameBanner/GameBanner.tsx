@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useQueryGame } from 'src/hooks';
-import { TopGame } from './TopGame';
+import { GameBannerItem } from './GameBannerItem';
 import { StyledGameBanner } from './GameBanner.styles';
 
 type GameBannerProps = ComponentPropsWithoutRef<'div'>;
@@ -23,7 +23,7 @@ export const GameBanner: React.FC<GameBannerProps> = (props) => {
     <StyledGameBanner>
       <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="carousel-container">
         {topGames.map((topGame) => (
-          <TopGame key={topGame.id} game={topGame} />
+          <GameBannerItem key={topGame.id} game={topGame} />
         ))}
       </Carousel>
     </StyledGameBanner>

@@ -1,28 +1,19 @@
 import { Grid, Image } from '@nextui-org/react';
 import React, { ComponentPropsWithoutRef, useMemo } from 'react';
-import Rating from 'react-stars';
+import { Rating } from 'src/components';
 import { IGDBClient } from 'src/services';
 import { Game } from 'src/shared/interfaces';
-import { StyledTopGame } from './TopGame.styles';
+import { StyledGameBannerItem } from './GameBannerItem.styles';
 import CalendarIcon from 'src/assets/calendar.svg';
 import UserIcon from 'src/assets/user.svg';
 import dayjs from 'dayjs';
+import { GameBannerRating } from './GameBannerRating';
 
-type TopGameProps = ComponentPropsWithoutRef<'div'> & {
+type GameBannerItemProps = ComponentPropsWithoutRef<'div'> & {
   game: Game;
 };
 
-/**
- * Scale of total rating that is using by IGDB
- */
-const TOTAL_RATING_SCALE = 100;
-
-/**
- * Scale of rating for displaying on UI
- */
-const DISPLAY_RATING_SCALE = 10;
-
-export const TopGame: React.FC<TopGameProps> = (props) => {
+export const GameBannerItem: React.FC<GameBannerItemProps> = (props) => {
   const { game, ...containerProps } = props;
   const coverURL = useMemo(() => game && IGDBClient.instance.getImageURL(game?.cover?.image_id, 'cover_big'), [game]);
   const backgroundURL = useMemo(
@@ -30,52 +21,22 @@ export const TopGame: React.FC<TopGameProps> = (props) => {
     [game]
   );
 
-  const calculateRatingValue = (rating: number): number => {
-    const fixedRating = +((rating * DISPLAY_RATING_SCALE) / TOTAL_RATING_SCALE).toFixed(1);
-    const floorRating = Math.floor(fixedRating);
-    const difference = fixedRating - floorRating;
-
-    if (difference > 0.75) {
-      return Math.round(fixedRating);
-    }
-
-    if (difference < 0.25) {
-      return floorRating;
-    }
-
-    return floorRating + 0.5;
-  };
-  const getRatingDescription = (totalRating: number, totalRatingCount: number): string => {
-    const fixedRating = +totalRating.toFixed(1);
-    return `${fixedRating} points based on ${totalRatingCount} member ratings`;
-  };
-
   const getReleaseDateText = (releaseDate: number): string => {
     return dayjs(releaseDate * 1000).format('DD-MM-YYYY');
   };
 
   return (
-    <StyledTopGame backgroundUrl={backgroundURL} {...containerProps}>
+    <StyledGameBannerItem backgroundUrl={backgroundURL} {...containerProps}>
       <Grid.Container gap={2} className="content">
         <Grid xs={12} sm={3} className="cover-container">
-          <Image src={coverURL} />
+          <Image src={coverURL} alt={`Cover Image - ${game?.name}`} className="cover-image" />
         </Grid>
         <Grid xs={12} sm={9} className="description">
           <div className="description-container">
             <div className="header">
               <p className="title">{game?.name}</p>
               <div className="extra-info">
-                <div className="rating">
-                  <Rating
-                    count={DISPLAY_RATING_SCALE}
-                    value={calculateRatingValue(game?.total_rating)}
-                    edit={false}
-                    half
-                  />
-                  <span className="rating-description">
-                    {getRatingDescription(game?.total_rating, game?.total_rating_count)}
-                  </span>
-                </div>
+                <GameBannerRating game={game} />
                 <div className="extra-info-separator" />
                 <div className="follow">
                   <UserIcon className="follow-icon" />
@@ -92,6 +53,6 @@ export const TopGame: React.FC<TopGameProps> = (props) => {
           </div>
         </Grid>
       </Grid.Container>
-    </StyledTopGame>
+    </StyledGameBannerItem>
   );
 };
