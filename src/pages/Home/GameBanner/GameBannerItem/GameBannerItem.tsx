@@ -1,14 +1,10 @@
 import { Grid, Image } from '@nextui-org/react';
 import React, { ComponentPropsWithoutRef, useMemo } from 'react';
-import { Rating } from 'src/components';
 import { IGDBClient } from 'src/services';
 import { Game } from 'src/shared/interfaces';
-import { StyledGameBannerItem } from './GameBannerItem.styles';
-import CalendarIcon from 'src/assets/calendar.svg';
-import UserIcon from 'src/assets/user.svg';
-import dayjs from 'dayjs';
-import { GameBannerRating } from './GameBannerRating';
 import { GameBannerExtraInfo } from './GameBannerExtraInfo';
+import { StyledGameBannerItem } from './GameBannerItem.styles';
+import { GameBannerRating } from './GameBannerRating';
 
 type GameBannerItemProps = ComponentPropsWithoutRef<'div'> & {
   game: Game;
@@ -21,10 +17,6 @@ export const GameBannerItem: React.FC<GameBannerItemProps> = (props) => {
     () => game && IGDBClient.instance.getImageURL(game?.screenshots?.[0]?.image_id, 'screenshot_huge'),
     [game]
   );
-
-  const getReleaseDateText = (releaseDate: number): string => {
-    return dayjs(releaseDate * 1000).format('DD-MM-YYYY');
-  };
 
   return (
     <StyledGameBannerItem backgroundUrl={backgroundURL} {...containerProps}>
