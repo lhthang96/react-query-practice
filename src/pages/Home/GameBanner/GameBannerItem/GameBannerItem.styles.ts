@@ -43,7 +43,7 @@ export const StyledGameBannerItem = styled.div<{ backgroundUrl: string }>`
       }
     }
 
-    .description {
+    .game-info {
       text-align: left;
 
       .header {
@@ -61,43 +61,16 @@ export const StyledGameBannerItem = styled.div<{ backgroundUrl: string }>`
           margin: 0;
         }
 
-        .extra-info {
+        .game-overview {
           width: 100%;
           display: flex;
-          align-items: stretch;
-          column-gap: 0.5rem;
+          align-items: center;
+          column-gap: 20px;
 
-          .extra-info-separator {
+          .game-overview-separator {
             width: 1px;
-            margin: 0 20px;
             background: ${THEME.TEXT_PRIMARY_INVERSE};
-          }
-
-          .release-date {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            row-gap: 8px;
-            color: ${THEME.TEXT_PRIMARY_INVERSE};
-
-            .release-date-icon {
-              width: 24px;
-              fill: ${THEME.TEXT_PRIMARY_INVERSE};
-            }
-          }
-
-          .follow {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            row-gap: 8px;
-            color: ${THEME.TEXT_PRIMARY_INVERSE};
-            margin-right: 20px;
-
-            .follow-icon {
-              width: 24px;
-              fill: ${THEME.TEXT_PRIMARY_INVERSE};
-            }
+            align-self: stretch;
           }
         }
       }

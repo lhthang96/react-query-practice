@@ -8,6 +8,7 @@ import CalendarIcon from 'src/assets/calendar.svg';
 import UserIcon from 'src/assets/user.svg';
 import dayjs from 'dayjs';
 import { GameBannerRating } from './GameBannerRating';
+import { GameBannerExtraInfo } from './GameBannerExtraInfo';
 
 type GameBannerItemProps = ComponentPropsWithoutRef<'div'> & {
   game: Game;
@@ -31,21 +32,14 @@ export const GameBannerItem: React.FC<GameBannerItemProps> = (props) => {
         <Grid xs={12} sm={3} className="cover-container">
           <Image src={coverURL} alt={`Cover Image - ${game?.name}`} className="cover-image" />
         </Grid>
-        <Grid xs={12} sm={9} className="description">
-          <div className="description-container">
+        <Grid xs={12} sm={9} className="game-info">
+          <div className="game-info-container">
             <div className="header">
               <p className="title">{game?.name}</p>
-              <div className="extra-info">
+              <div className="game-overview">
                 <GameBannerRating game={game} />
-                <div className="extra-info-separator" />
-                <div className="follow">
-                  <UserIcon className="follow-icon" />
-                  <span className="follow-text">{game?.follows}</span>
-                </div>
-                <div className="release-date">
-                  <CalendarIcon className="release-date-icon" />
-                  <span className="release-date-text">{getReleaseDateText(game?.first_release_date)}</span>
-                </div>
+                <div className="game-overview-separator" />
+                <GameBannerExtraInfo game={game} />
               </div>
             </div>
             <div className="separator" />
