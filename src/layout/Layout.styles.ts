@@ -11,5 +11,6 @@ export const StyledLayout = styled.div`
 
   .content {
     flex: 1;
+    height: 100%;
   }
 `;

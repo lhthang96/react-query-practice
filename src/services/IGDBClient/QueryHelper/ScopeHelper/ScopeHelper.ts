@@ -13,7 +13,8 @@ export class ScopeHelper {
             genres: ['*'],
             release_dates: ['*'],
             similar_games: ['cover', 'id', 'name'],
-            platforms: ['*']
+            platforms: ['*'],
+            involved_companies: ['*']
           }
         };
 
@@ -30,7 +31,9 @@ export class ScopeHelper {
           fields: '*',
           expanders: {
             cover: ['animated', 'width', 'height', 'url', 'image_id'],
-            screenshots: ['id', 'height', 'width', 'url', 'image_id']
+            screenshots: ['id', 'height', 'width', 'url', 'image_id'],
+            involved_companies: ['id', 'developer', 'company'],
+            genres: ['id', 'name']
           }
         };
     }

@@ -25,6 +25,7 @@ export type Game = {
   url?: string; // The website address (URL) of the item
   platforms?: number[];
   themes?: GameTheme[];
+  involved_companies?: GameInvolvedCompany[];
 };
 
 export type GameCover = {
@@ -82,3 +83,9 @@ export type ImageSize =
   | 'micro' // 35 x 35	Thumb, Center gravity
   | '720p' // 1280 x 720	Fit, Center gravity
   | '1080p'; //1920 x 1080	Fit, Center gravity
+
+export type GameInvolvedCompany = {
+  id: string;
+  company: string;
+  developer: boolean;
+};

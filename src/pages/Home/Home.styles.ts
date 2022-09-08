@@ -14,4 +14,8 @@ export const StyledHome = styled(Grid.Container)`
     padding: 32px 40px;
     border-right: 1px solid ${THEME.BORDER_COLOR};
   }
+
+  .home-right-container {
+    height: 100%;
+  }
 `;
