@@ -8,6 +8,12 @@ export const StyledSeeAllButton = styled.div`
   padding: 4px 0;
   cursor: pointer;
 
+  &:hover {
+    .button-text {
+      text-decoration: underline;
+    }
+  }
+
   .button-text {
     color: ${THEME.PRIMARY};
     font-size: 14px;

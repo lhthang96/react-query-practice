@@ -15,7 +15,6 @@ export const NewGame: React.FC<NewGameProps> = (props) => {
   const { name, genres, first_release_date, release_dates, cover, created_at } = game;
   const thumbnail = IGDBClient.instance.getImageURL(cover?.image_id, 'thumb');
   const genreNames = genres?.map((genre) => genre.name)?.join(', ');
-
   const releaseDate = first_release_date
     ? first_release_date
     : release_dates?.length

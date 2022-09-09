@@ -1,6 +1,5 @@
 import { Grid } from '@nextui-org/react';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { GameBanner } from './GameBanner';
 import { StyledHome } from './Home.styles';
 import { HomeSidebar } from './HomeSidebar';
