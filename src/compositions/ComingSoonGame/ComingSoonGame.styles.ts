@@ -30,6 +30,7 @@ export const StyledComingSoonGame = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+
       .game-screenshot-image {
         width: ${SCREENSHOT_WIDTH}px;
         height: ${SCREENSHOT_WIDTH / SCREENSHOT_MED_RATIO}px;

@@ -5,12 +5,11 @@ import styled from 'styled-components';
 export const StyledHome = styled(Grid.Container)`
   width: 100%;
   height: 100%;
-  overflow: hidden;
 
   .home-content {
     width: 100%;
     height: 100%;
-    overflow: hidden auto;
+    overflow-y: auto;
     padding: 32px 40px;
     border-right: 1px solid ${THEME.BORDER_COLOR};
   }

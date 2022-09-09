@@ -5,7 +5,7 @@ export const StyledSeeAllButton = styled.div`
   display: flex;
   align-items: center;
   column-gap: 6px;
-  padding: 4px 8px;
+  padding: 4px 0;
   cursor: pointer;
 
   .button-text {

@@ -10,7 +10,11 @@ export const StyledLayout = styled.div`
   flex-direction: column;
 
   .content {
-    flex: 1;
-    height: 100%;
   }
+`;
+
+export const StyledNavbarContainer = styled.div``;
+
+export const StyledAppContentContainer = styled.main<{ navbarHeight: number }>`
+  height: ${(props): string => `calc(100% - ${props.navbarHeight}px)`};
 `;

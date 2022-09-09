@@ -33,7 +33,8 @@ export class ScopeHelper {
             cover: ['animated', 'width', 'height', 'url', 'image_id'],
             screenshots: ['id', 'height', 'width', 'url', 'image_id'],
             involved_companies: ['id', 'developer', 'company'],
-            genres: ['id', 'name']
+            genres: ['id', 'name'],
+            release_dates: ['*']
           }
         };
     }

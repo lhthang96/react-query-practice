@@ -1,13 +1,15 @@
-import { Button, Navbar } from '@nextui-org/react';
+import { Navbar, NavbarProps } from '@nextui-org/react';
 import React from 'react';
 import IconHeart from 'src/assets/icon_heart.svg';
 import IconSearch from 'src/assets/icon_search.svg';
 import IGDBLogo from 'src/assets/logo_desktop.svg';
 import { StyledFavoriteButton, StyledNavigationBar, StyledSearchInput } from './NavigationBar.styles';
 
-export const NavigationBar: React.FC = () => {
+type NavigationBarProps = NavbarProps;
+
+export const NavigationBar: React.FC<NavigationBarProps> = (props) => {
   return (
-    <StyledNavigationBar>
+    <StyledNavigationBar {...props}>
       <Navbar.Brand>
         <IGDBLogo height={72} />
       </Navbar.Brand>

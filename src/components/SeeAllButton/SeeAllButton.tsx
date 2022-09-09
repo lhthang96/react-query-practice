@@ -8,7 +8,7 @@ export const SeeAllButton: React.FC<SeeAllButtonProps> = (props) => {
   return (
     <StyledSeeAllButton {...props}>
       <span className="button-text">See all</span>
-      <ChevronRightIcon className="button-icon" />
+      {/* <ChevronRightIcon className="button-icon" /> */}
     </StyledSeeAllButton>
   );
 };

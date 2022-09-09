@@ -26,6 +26,7 @@ export type Game = {
   platforms?: number[];
   themes?: GameTheme[];
   involved_companies?: GameInvolvedCompany[];
+  created_at: number; // Unix timestamp
 };
 
 export type GameCover = {
@@ -55,9 +56,12 @@ export type GameGenre = {
 };
 
 export type GameReleaseDate = {
+  id: string;
   category: ReleaseDateCategory;
-  date: number; // Unix time stamp
+  date: number; // Unix time stamp in seconds
   region: ReleaseDateRegion;
+  platform: GamePlatform;
+  created_at: number; // Unix timestamp
 };
 
 export type SimilarGame = Pick<Game, 'id' | 'name' | 'cover'>;
