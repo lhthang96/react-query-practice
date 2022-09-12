@@ -1,8 +1,5 @@
 import { Grid } from '@nextui-org/react';
 import React, { ReactElement } from 'react';
-import { useQuery } from 'react-query';
-import { IGDBClient } from 'src/services';
-import { GameTheme } from 'src/shared/interfaces';
 import { GameBanner } from './GameBanner';
 import { TOP_GENRES } from './Home.constant';
 import { StyledHome } from './Home.styles';
@@ -10,13 +7,6 @@ import { HomeSidebar } from './HomeSidebar';
 import { TopGameListByGenre } from './TopGameListByGenre';
 
 export const Home: React.FC = () => {
-  useQuery('themes', async (): Promise<GameTheme[]> => {
-    return await IGDBClient.instance.getThemes({
-      scope: 'full',
-      pagination: { limit: 100, offset: 0 }
-    });
-  });
-
   const renderTopGameListByGenre = (): ReactElement[] => {
     return TOP_GENRES.map(({ id: genreId, name: genreName }) => (
       <TopGameListByGenre
