@@ -14,7 +14,8 @@ export class ScopeHelper {
             release_dates: ['*'],
             similar_games: ['cover', 'id', 'name'],
             platforms: ['*'],
-            involved_companies: ['*']
+            involved_companies: ['*'],
+            themes: ['id', 'name']
           }
         };
 
@@ -34,6 +35,7 @@ export class ScopeHelper {
             screenshots: ['id', 'height', 'width', 'url', 'image_id'],
             involved_companies: ['id', 'developer', 'company'],
             genres: ['id', 'name'],
+            themes: ['id', 'name'],
             release_dates: ['*']
           }
         };

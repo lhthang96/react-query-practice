@@ -7,7 +7,7 @@ export const THEME = {
   TEXT_PRIMARY: '#212121',
   TEXT_PRIMARY_INVERSE: '#fff',
 
-  BG_SECONDARY: '#efefef',
+  BG_SECONDARY: '#f8f8f8',
   BG_PRIMARY: '#fff',
 
   BORDER_COLOR: '#f3f3f3'

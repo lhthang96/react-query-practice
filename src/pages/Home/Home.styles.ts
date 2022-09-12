@@ -7,14 +7,22 @@ export const StyledHome = styled(Grid.Container)`
   height: 100%;
 
   .home-content {
-    width: 100%;
+    display: block;
     height: 100%;
     overflow-y: auto;
     padding: 32px 40px;
     border-right: 1px solid ${THEME.BORDER_COLOR};
+
+    .game-banner {
+      margin-bottom: 40px;
+    }
+
+    .top-list-by-genre {
+    }
   }
 
   .home-right-container {
+    width: 25%;
     height: 100%;
   }
 `;

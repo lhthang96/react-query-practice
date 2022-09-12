@@ -20,7 +20,7 @@ export const GameBanner: React.FC<GameBannerProps> = (props) => {
   });
 
   return (
-    <StyledGameBanner>
+    <StyledGameBanner {...props}>
       <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="carousel-container">
         {topGames.map((topGame) => (
           <GameBannerItem key={topGame.id} game={topGame} />

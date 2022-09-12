@@ -57,6 +57,10 @@ const getReleaseDateText = (releaseDate: number): string => {
   const isToday = date.isSame(now, 'date');
   if (isToday) {
     const hours = now.diff(date, 'hour');
+    if (hours < 1) {
+      const minutes = now.diff(date, 'minute');
+      return minutes <= 1 ? 'Just now' : `${minutes} minutes ago`;
+    }
     return hours === 1 ? `An hour ago` : `${hours} hours ago`;
   }
 
