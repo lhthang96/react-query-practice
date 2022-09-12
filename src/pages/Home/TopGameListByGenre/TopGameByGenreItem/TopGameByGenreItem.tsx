@@ -12,8 +12,8 @@ export const TopGameByGenreItem: React.FC<TopGameByGenreItemProps> = (props) => 
   const { game, ...containerProps } = props;
   const { name, cover, themes, total_rating } = game;
   const coverImg = IGDBClient.instance.getImageURL(cover?.image_id, 'cover_big');
-  const themeNames = themes.map((theme) => theme.name).join(', ');
-  const ratingText = total_rating.toFixed(1);
+  const themeNames = (themes || []).map((theme) => theme.name).join(', ') || 'No theme';
+  const ratingText = total_rating?.toFixed(1);
 
   return (
     <StyledTopGameByGenreItem {...containerProps}>

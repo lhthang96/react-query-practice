@@ -36,7 +36,7 @@ export type QuerySorterOrder = 'desc' | 'asc';
 /**
  * Filters
  */
-export type QueryFilter<Data extends object = any> = [keyof Data | string, QueryFilterOperator, QueryFilterValue];
+export type QueryFilter<Data extends object = any> = [keyof Data, QueryFilterOperator, QueryFilterValue];
 export type QueryFilterOperator = '=' | '!=' | '>' | '>=' | '<' | '<=' | '~';
 export type QueryFilterValue = string | number | 'null';
 

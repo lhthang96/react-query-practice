@@ -14,7 +14,7 @@ export const GameBanner: React.FC<GameBannerProps> = (props) => {
       ['follows', 'desc']
     ],
     filters: [
-      ['total_rating', '=', 'null'],
+      ['total_rating', '!=', 'null'],
       ['follows', '!=', 'null']
     ]
   });

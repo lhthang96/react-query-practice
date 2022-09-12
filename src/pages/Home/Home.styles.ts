@@ -17,7 +17,8 @@ export const StyledHome = styled(Grid.Container)`
       margin-bottom: 40px;
     }
 
-    .top-list-by-genre {
+    .top-game-list-by-genre {
+      margin-bottom: 32px;
     }
   }
 
