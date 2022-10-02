@@ -22,7 +22,7 @@ export type IGDBQueryObject<Data extends object = any> = {
  */
 export type QueryFields<Data extends object = any> = (keyof Data)[] | string;
 export type QueryExpanders<Data extends object = any> = {
-  [key in keyof Data]:
+  [key in keyof Data]?:
     | (Data[key] extends readonly (infer ElementType)[] ? keyof ElementType : keyof Data[key])[]
     | ['*'];
 };
