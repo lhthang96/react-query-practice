@@ -55,7 +55,7 @@
     "dev": "concurrently \"yarn start-proxy\" \"yarn start\"",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
     "serve": "serve public -p 8001",
-    "test": "jest --watch",
+    "test": "jest --watch --collect-coverage",
     "deploy": "firebase deploy",
     "clean": "rm -r ./public"
   }

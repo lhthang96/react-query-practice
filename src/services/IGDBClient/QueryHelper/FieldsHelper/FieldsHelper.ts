@@ -2,7 +2,7 @@ import { QueryExpanders, QueryFields } from 'src/shared/interfaces';
 
 export class FieldsHelper {
   public getQuery = <Entity extends object = any>(
-    fields: QueryFields<Entity> = '*',
+    fields: QueryFields<Entity>,
     expanders?: QueryExpanders,
     excludes?: (keyof Entity)[]
   ): string => {
@@ -24,7 +24,7 @@ export class FieldsHelper {
     let result = queryString;
 
     Object.entries(expanders).forEach((expander) => {
-      const [field, expanderFields = ['*']] = expander;
+      const [field, expanderFields] = expander;
       const expanderQuery = expanderFields
         .map((expanderField) => `${field.toString()}.${expanderField.toString()}`)
         .join(',');
