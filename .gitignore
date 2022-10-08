@@ -4,3 +4,4 @@
 *.log
 yarn-error.log*
 /.vscode
+/coverage
