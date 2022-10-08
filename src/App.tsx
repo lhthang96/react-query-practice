@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from 'src/pages';
+import { withAppErrorBoundary } from './hoc';
 import { Layout } from './layout';
 import { Search } from './pages/Search';
 
@@ -17,7 +18,7 @@ const queryClient = new QueryClient({
   }
 });
 
-export const App: React.FC = () => {
+const AppContent: React.FC = () => {
   return (
     <NextUIProvider>
       <QueryClientProvider client={queryClient}>
@@ -31,3 +32,5 @@ export const App: React.FC = () => {
     </NextUIProvider>
   );
 };
+
+export const App = withAppErrorBoundary(AppContent);

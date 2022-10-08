@@ -26,7 +26,6 @@ const HomeContent: React.FC = () => {
       setError(() => {
         throw new Error('Testing error');
       });
-      throw new Error('Set timeout error');
     }, 2000);
   }, []);
 
@@ -43,4 +42,5 @@ const HomeContent: React.FC = () => {
   );
 };
 
-export const Home = withScriptErrorBoundary(HomeContent);
+// export const Home = withScriptErrorBoundary(HomeContent);
+export const Home = HomeContent;
