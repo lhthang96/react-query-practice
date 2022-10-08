@@ -1,5 +1,5 @@
 import { Grid } from '@nextui-org/react';
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement } from 'react';
 import { withScriptErrorBoundary } from 'src/hoc/withScriptErrorBoundary';
 import { GameBanner } from './GameBanner';
 import { TOP_GENRES } from './Home.constant';
@@ -19,16 +19,6 @@ const HomeContent: React.FC = () => {
     ));
   };
 
-  const [error, setError] = useState<string>();
-  useEffect(() => {
-    window.setTimeout(() => {
-      // throw new Error('Testing error');
-      setError(() => {
-        throw new Error('Testing error');
-      });
-    }, 2000);
-  }, []);
-
   return (
     <StyledHome>
       <Grid xs={12} sm={9} className="home-content">
@@ -42,5 +32,4 @@ const HomeContent: React.FC = () => {
   );
 };
 
-// export const Home = withScriptErrorBoundary(HomeContent);
-export const Home = HomeContent;
+export const Home = withScriptErrorBoundary(HomeContent);
