@@ -1,12 +1,13 @@
 import { Grid } from '@nextui-org/react';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { withScriptErrorBoundary } from 'src/hoc/withScriptErrorBoundary';
 import { GameBanner } from './GameBanner';
 import { TOP_GENRES } from './Home.constant';
 import { StyledHome } from './Home.styles';
 import { HomeSidebar } from './HomeSidebar';
 import { TopGameListByGenre } from './TopGameListByGenre';
 
-export const Home: React.FC = () => {
+const HomeContent: React.FC = () => {
   const renderTopGameListByGenre = (): ReactElement[] => {
     return TOP_GENRES.map(({ id: genreId, name: genreName }) => (
       <TopGameListByGenre
@@ -17,6 +18,17 @@ export const Home: React.FC = () => {
       />
     ));
   };
+
+  const [error, setError] = useState<string>();
+  useEffect(() => {
+    window.setTimeout(() => {
+      // throw new Error('Testing error');
+      setError(() => {
+        throw new Error('Testing error');
+      });
+      throw new Error('Set timeout error');
+    }, 2000);
+  }, []);
 
   return (
     <StyledHome>
@@ -30,3 +42,5 @@ export const Home: React.FC = () => {
     </StyledHome>
   );
 };
+
+export const Home = withScriptErrorBoundary(HomeContent);
