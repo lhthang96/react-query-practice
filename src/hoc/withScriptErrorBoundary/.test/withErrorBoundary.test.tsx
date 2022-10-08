@@ -7,7 +7,7 @@ const ComponentWithScriptError: React.FC = () => {
 };
 
 const ComponentWithoutScriptError: React.FC = () => {
-  return <div>I'm component</div>;
+  return <div role="status">No error component</div>;
 };
 
 describe('withScriptErrorBoundary HOC test suite', () => {
@@ -15,5 +15,11 @@ describe('withScriptErrorBoundary HOC test suite', () => {
     const Component = withScriptErrorBoundary(ComponentWithScriptError);
     render(<Component />);
     expect(screen.getByRole('status').textContent).toBe('Something went wrong');
+  });
+
+  test('Component will be renderer normally if there is no script error', () => {
+    const Component = withScriptErrorBoundary(ComponentWithoutScriptError);
+    render(<Component />);
+    expect(screen.getByRole('status').textContent).toBe('No error component');
   });
 });
