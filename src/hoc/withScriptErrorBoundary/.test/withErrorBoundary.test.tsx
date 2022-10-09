@@ -14,7 +14,7 @@ describe('withScriptErrorBoundary HOC test suite', () => {
   test('ScriptErrorFallback component will be rendered if the component throw script error', () => {
     const Component = withScriptErrorBoundary(ComponentWithScriptError);
     render(<Component />);
-    expect(screen.getByRole('status').textContent).toBe('Something went wrong');
+    expect(screen.getByRole('alert').textContent).toBe('Something went wrong');
   });
 
   test('Component will be renderer normally if there is no script error', () => {

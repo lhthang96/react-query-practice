@@ -8,11 +8,11 @@ type ScriptErrorFallbackProps = ComponentPropsWithoutRef<'div'> & {
 
 export const ScriptErrorFallback: React.FC<ScriptErrorFallbackProps> = (props) => {
   const { error, ...containerProps } = props;
-  console.log('Error props', { error, message: error.message });
+
   return (
     <StyledScriptErrorFallback {...containerProps}>
       <CrashIcon className="crash-icon" />
-      <p className="error-message" role="status">
+      <p className="error-message" role="alert">
         Something went wrong
       </p>
     </StyledScriptErrorFallback>

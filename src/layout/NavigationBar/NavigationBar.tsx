@@ -1,4 +1,4 @@
-import { Navbar, NavbarProps } from '@nextui-org/react';
+import { Input, Navbar, NavbarProps } from '@nextui-org/react';
 import React from 'react';
 import IconHeart from 'src/assets/icon_heart.svg';
 import IconSearch from 'src/assets/icon_search.svg';
@@ -16,6 +16,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = (props) => {
       <Navbar.Content gap={'16px'}>
         <Navbar.Item>
           <StyledSearchInput
+            aria-label="Search input"
             placeholder="Search"
             contentRightStyling={false}
             contentRight={<IconSearch className="search-icon" />}
